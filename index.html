@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html lang="no">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta name="theme-color" content="#101713">
+
+<title>PT Kompis</title>
+
+<style>
+
+body{margin:0;background:#101713;color:white;font-family:Arial;padding:18px}
+
+h1{color:#9be36b;font-size:30px}
+
+.card{background:#1b2921;padding:18px;border-radius:16px;margin:15px 0}
+
+input{width:95%;padding:12px;margin:6px 0;background:#101713;color:white;border:1px solid #526052;border-radius:9px;font-size:16px}
+
+button{background:#9be36b;color:#101713;border:0;border-radius:10px;padding:13px;font-weight:bold;width:100%;margin-top:10px}
+
+small{color:#aab7ac}
+
+h2{color:#9be36b}
+
+li{margin:12px 0}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>PT Kompis 💪</h1>
+
+<p>Din personlige treningskompis. Ett steg om gangen!</p>
+
+<div class="card">
+
+<h2>Dagens logg</h2>
+
+<label>Vekt (kg)</label><input id="weight" type="number" step="0.1" placeholder="95">
+
+<label>Skritt</label><input id="steps" type="number" placeholder="8000">
+
+<label>Kalorier</label><input id="cal" type="number" placeholder="2000">
+
+<label>Protein (gram)</label><input id="protein" type="number" placeholder="160">
+
+<button onclick="save()">Lagre dagens logg</button>
+
+<p id="message"><small>Loggen lagres på telefonen din.</small></p>
+
+</div>
+
+<div class="card">
+
+<h2>Treningsplan</h2>
+
+<p><b>ØKT A – Helkropp</b></p>
+
+<label><input type="checkbox"> Knebøy med manual – 3 x 10</label>
+
+<label><input type="checkbox"> Brystpress – 3 x 10</label>
+
+<label><input type="checkbox"> Enarmsroing – 3 x 12</label>
+
+<label><input type="checkbox"> Bicepscurl – 2 x 12</label>
+
+<hr>
+
+<p><b>ØKT B – Helkropp</b></p>
+
+<label><input type="checkbox"> Rumensk markløft – 3 x 10</label>
+
+<label><input type="checkbox"> Utfall – 2 x 8</label>
+
+<label><input type="checkbox"> Skulderpress – 3 x 10</label>
+
+<label><input type="checkbox"> Planke – 3 x 20 sek</label>
+
+<hr>
+
+<p><b>ØKT C – Lett økt</b></p>
+
+<label><input type="checkbox"> Knebøy til stol – 3 x 12</label>
+
+<label><input type="checkbox"> Roing – 3 x 12</label>
+
+<label><input type="checkbox"> Push-ups mot benk – 3 x 8</label>
+
+<label><input type="checkbox"> Rolig gange – 20 min</label>
+
+<p><small>Start rolig og stopp ved skarp smerte.</small></p>
+
+</div>
+
+<div class="card">
+
+<h2>Mat og protein</h2>
+
+<p>Enkle måltider du kan loggføre:</p>
+
+<label>Frokost<input id="food1" placeholder="Hva spiste du?"></label>
+
+<label>Lunsj<input id="food2" placeholder="Hva spiste du?"></label>
+
+<label>Middag<input id="food3" placeholder="Hva spiste du?"></label>
+
+<label>Kveldsmat<input id="food4" placeholder="Hva spiste du?"></label>
+
+<button onclick="saveFood()">Lagre måltidene</button>
+
+</div>
+
+<div class="card">
+
+<h2>PT-kompisen din</h2>
+
+<p>Trenger du motivasjon eller hjelp med trening og mat?</p>
+
+<button onclick="window.open('https://chatgpt.com/','_blank')">Snakk med PT-kompisen</button>
+
+</div>
+
+<script>
+
+function save(){
+
+let d={weight:weight.value,steps:steps.value,cal:cal.value,protein:protein.value};
+
+localStorage.setItem('pt-'+new Date().toDateString(),JSON.stringify(d));
+
+message.innerHTML='Loggen er lagret! ✓';
+
+}
+
+function saveFood(){
+
+let f=[food1.value,food2.value,food3.value,food4.value];
+
+localStorage.setItem('pt-food-'+new Date().toDateString(),JSON.stringify(f));
+
+alert('Måltidene er lagret!');
+
+}
+
+</script>
+
+</body>
+
+</html>
